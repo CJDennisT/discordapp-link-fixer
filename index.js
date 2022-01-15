@@ -1,7 +1,7 @@
 // Config file
 const config = require('./config.js')
 // DiscordJS
-const { Intents, Client, MessageMentions } = require('discord.js')
+const { Intents, Client } = require('discord.js')
 // Discord Client
 const discordClient = new Client({
   intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES ]
