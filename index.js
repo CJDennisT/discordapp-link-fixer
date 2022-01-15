@@ -1,7 +1,7 @@
 // Config file
 const config = require('./config.js')
 // DiscordJS
-const { Intents, Client } = require('discord.js')
+const { Intents, Client, MessageMentions } = require('discord.js')
 // Discord Client
 const discordClient = new Client({
   intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES ]
@@ -55,6 +55,8 @@ discordClient.on('messageCreate', (message) => {
         msg.delete()
         // Replies with a fixed link
         message.reply({
+          // Ensures user is not pinged
+          allowedMentions: { repliedUser: false },
           // Creates content for message
           content: newLink
         })
@@ -74,6 +76,8 @@ discordClient.on('messageCreate', (message) => {
       msg.delete()
       // Replies to sender with information
       message.reply({
+        // Ensures user is not pinged
+        allowedMentions: { repliedUser: false },
         // Creates content for message
         content: `pong!`
         // Compares messages timestamps to calculate ms
