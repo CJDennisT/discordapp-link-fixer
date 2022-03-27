@@ -49,10 +49,12 @@ discordClient.on('messageCreate', (message) => {
       // Creates a message with the good link
       var newLink = goodLink + slice
       // Sends / deletes a temporary message then sends webhook message
-      message.channel.send('Bad link detected! Loading new link!')
+      message.channel.send('Bad link detected! Removing embed and loading new link!')
       .then (async (msg) => {
         // Deletes the temporary message
         msg.delete()
+        // Remove embed from original message
+        message.suppressEmbeds(true)
         // Replies with a fixed link
         message.reply({
           // Ensures user is not pinged
